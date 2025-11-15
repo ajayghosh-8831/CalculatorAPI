@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CalculatorAPI/CalculatorAPI.csproj" />
+  <Project Path="CalculatorAPITestProject/CalculatorAPITestProject.csproj" Id="aac716b1-4022-4fd2-bef7-07269111b0a2" />
+</Solution>
