@@ -1,4 +1,3 @@
-using CalculatorAPI.Logging;
 using CalculatorAPI.Resources;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -8,23 +7,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-// configure file logger path
-var logFilePath = Path.Combine(builder.Environment.ContentRootPath, "Logs", "app.log");
-var fileLoggerProvider = new FileLoggerProvider(logFilePath);
+// NOTE: file-based logging disabled to avoid startup I/O overhead during debugging.
 
-builder.Logging.ClearProviders();
-builder.Logging.AddProvider(fileLoggerProvider);
-builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Information);
-
-// Add CORS policy for Angular dev server
+// Add CORS policy for Angular dev server (temporarily allow all origins for debugging)
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularDev", policy =>
-    {
-        policy.WithOrigins("http://localhost:4200")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
+    options.AddPolicy("AllowAngularDev",
+        builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
 });
 builder.Services.AddControllers();
 
@@ -52,8 +44,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Apply CORS policy so preflight and cross-origin requests from Angular are allowed
+app.UseCors("AllowAngularDev");
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.Run();app.Run();
