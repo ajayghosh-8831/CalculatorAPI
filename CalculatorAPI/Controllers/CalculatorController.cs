@@ -20,13 +20,6 @@ namespace CalculatorAPI.Controllers
             this.calculatorResource = calculatorResource;
             this.logger = logger;
         }
-        // GET: api/<CalculatorController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            logger.LogInformation("GET api/Calculator called");
-            return new string[] { "value1", "value2" };
-        }
 
         /// <summary>
         /// Calculate probabilities.

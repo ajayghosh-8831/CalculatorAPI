@@ -22,17 +22,7 @@ namespace CalculatorAPITestProject
                 _controller = new CalculatorController(_mockCalculatorResource.Object, _mockLogger.Object);
             }
 
-            [Fact]
-            public void Get_ReturnsOkResultWithStringArray()
-            {
-                // Act
-                var result = _controller.Get();
-
-                // Assert
-                Assert.NotNull(result);
-                Assert.IsAssignableFrom<IEnumerable<string>>(result);
-                Assert.Equal(2, result.Count());
-            }
+          
 
             [Fact]
             public async Task Calculate_WithValidRequest_ReturnsOkResult()
