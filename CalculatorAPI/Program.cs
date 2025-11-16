@@ -71,13 +71,6 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddControllers();
 
-// Add Swagger/OpenAPI generation (Swashbuckle)
-builder.Services.AddSwaggerGen(c =>
-{
-    // register the schema filter we added (class is in CalculatorAPI.Swagger)
-
-});
-
 // existing helper to add OpenAPI (keeps your previous configuration)
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<ICalculatorResource, CalculatorResource>();
@@ -105,15 +98,6 @@ try
 catch (Exception ex)
 {
     Console.WriteLine("Logger test failed: " + ex);
-}
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    // enable Swagger UI + JSON endpoints in development
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();

@@ -1,6 +1,5 @@
 ﻿using CalculatorAPI.Contracts;
 using CalculatorAPI.Helper;
-using CalculatorAPI.Logging;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Logging;
 
