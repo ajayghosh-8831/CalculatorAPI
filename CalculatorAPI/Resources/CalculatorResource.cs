@@ -1,7 +1,5 @@
 ﻿using CalculatorAPI.Contracts;
 using CalculatorAPI.Helper;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.Extensions.Logging;
 
 namespace CalculatorAPI.Resources
 {
